@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechWorld - O Futuro da Tecnologia</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: rgba(10, 10, 46, 0.9);
+            padding: 20px 0;
+            border-bottom: 3px solid #00d4ff;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: #00d4ff;
+            color: #0a0a2e;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00d4ff, #7b2ffc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #b0b0d0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00d4ff, #7b2ffc);
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Seção de Artigos */
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #00d4ff, #7b2ffc);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .article-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .article-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .article-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #00d4ff;
+        }
+
+        .article-card p {
+            color: #b0b0d0;
+            margin-bottom: 15px;
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00d4ff;
+        }
+
+        /* Seção de Vídeos */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: #7b2ffc;
+            box-shadow: 0 10px 40px rgba(123, 47, 252, 0.2);
+        }
+
+        .video-thumb {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a4e, #0a0a2e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            position: relative;
+        }
+
+        .video-thumb .play-btn {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 212, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            transition: all 0.3s;
+        }
+
+        .video-card:hover .play-btn {
+            background: #7b2ffc;
+            transform: scale(1.1);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            color: #b0b0d0;
+            font-size: 14px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 47, 252, 0.1));
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            color: #b0b0d0;
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            width: 300px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .newsletter-form input::placeholder {
+            color: #8888aa;
+        }
+
+        /* Rodapé */
+        footer {
+            background: rgba(10, 10, 46, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul a {
+            color: #b0b0d0;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-column ul a:hover {
+            color: #00d4ff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666688;
+            font-size: 14px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .newsletter-form input {
+                width: 100%;
+            }
+
+            .newsletter {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Tech<span>World</span></div>
+                <ul class="nav-links">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Artigos</a></li>
+                    <li><a href="#">Vídeos</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>O Futuro da Tecnologia</h1>
+            <p>Explore as mais recentes inovações em inteligência artificial, computação quântica, realidade virtual e muito mais. O amanhã está sendo construído hoje.</p>
+            <a href="#" class="btn">Explorar Agora</a>
+        </div>
+    </section>
+
+    <!-- Artigos -->
+    <div class="container">
+        <h2 class="section-title">Artigos em Destaque</h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <div class="article-icon">🤖</div>
+                <h3>IA Generativa</h3>
+                <p>Como modelos como GPT e DALL-E estão revolucionando a criação de conteúdo e a interação humano-máquina.</p>
+                <span class="article-tag">Inteligência Artificial</span>
+            </div>
+            <div class="article-card">
+                <div class="article-icon">⚛️</div>
+                <h3>Computação Quântica</h3>
+                <p>O próximo salto computacional que promete resolver problemas impossíveis para computadores clássicos.</p>
+                <span class="article-tag">Hardware</span>
+            </div>
+            <div class="article-card">
+                <div class="article-icon">🥽</div>
+                <h3>Realidade Aumentada</h3>
+                <p>A fusão do mundo digital com o físico e como isso vai transformar a forma como trabalhamos e vivemos.</p>
+                <span class="article-tag">Realidade Virtual</span>
+            </div>
+            <div class="article-card">
+                <div class="article-icon">🔗</div>
+                <h3>Blockchain e Web3</h3>
+                <p>A descentralização da internet e o impacto das criptomoedas e contratos inteligentes na economia digital.</p>
+                <span class="article-tag">Blockchain</span>
+            </div>
+            <div class="article-card">
+                <div class="article-icon">🚀</div>
+                <h3>Tecnologia Espacial</h3>
+                <p>Missões privadas e governamentais que estão tornando o espaço mais acessível e abrindo novas fronteiras.</p>
+                <span class="article-tag">Exploração</span>
+            </div>
+            <div class="article-card">
+                <div class="article-icon">🧬</div>
+                <h3>Biotecnologia</h3>
+                <p>Como a tecnologia está transformando a medicina, a agricultura e a forma como entendemos a vida.</p>
+                <span class="article-tag">Ciência</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vídeos -->
+    <div class="container">
+        <h2 class="section-title">Vídeos em Destaque</h2>
+        <div class="videos-grid">
+            <div class="video-card">
+                <div class="video-thumb">
+                    <div class="play-btn">▶</div>
+                </div>
+                <div class="video-info">
+                    <h4>O Futuro da IA</h4>
+                    <p>Como a inteligência artificial vai transformar todos os setores da economia.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumb">
+                    <div class="play-btn">▶</div>
+                </div>
+                <div class="video-info">
+                    <h4>Computação Quântica</h4>
+                    <p>Entenda o básico da computação quântica e seu potencial revolucionário.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumb">
+                    <div class="play-btn">▶</div>
+                </div>
+                <div class="video-info">
+                    <h4>Realidade Virtual</h4>
+                    <p>Como a VR está mudando o entretenimento, a educação e o trabalho.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="container">
+        <div class="newsletter">
+            <h2>Fique por Dentro</h2>
+            <p>Receba as últimas notícias e novidades sobre tecnologia diretamente no seu e-mail.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Digite seu e-mail" required>
+                <button type="submit" class="btn">Inscrever-se</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>TechWorld</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Categorias</h4>
+                    <ul>
+                        <li><a href="#">Inteligência Artificial</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Software</a></li>
+                        <li><a href="#">Segurança</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Redes Sociais</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="#">contato@techworld.com</a></li>
+                        <li><a href="#">(11) 99999-9999</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 TechWorld - Todos os direitos reservados. | Feito com ❤️ por apaixonados por tecnologia.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
